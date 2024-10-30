@@ -2,6 +2,7 @@ package edu.sharif.selab.services;
 
 import edu.sharif.selab.models.EmailMessage;
 import edu.sharif.selab.models.SmsMessage;
+import edu.sharif.selab.models.TelegramMessage;
 
 public class TelegramMessageService implements MessageService{
 
@@ -16,12 +17,15 @@ public class TelegramMessageService implements MessageService{
     }
 
     @Override
-    public void sendTelegramMessage(EmailMessage emailMessage) {
-        //TODO
+    public void sendTelegramMessage(TelegramMessage telegramMessage) {
+        if(validatePhoneNumber(telegramMessage.getSourcePhoneNumber()) && validatePhoneNumber(telegramMessage.getTargetPhoneNumber())){
+            System.out.println("Sending a Telegram Message from " + telegramMessage.getSourcePhoneNumber() + " to " + telegramMessage.getTargetPhoneNumber() + " with content : " + telegramMessage.getContent());
+        }else{
+            throw new IllegalArgumentException("Phone Number is Not Correct!");
+        }
     }
 
     private boolean validatePhoneNumber(String phoneNumber) {
-        //TODO
         // Check if the phone number is exactly 11 characters long
         if (phoneNumber.length() != 11) {
             return false; // Phone number length is not valid

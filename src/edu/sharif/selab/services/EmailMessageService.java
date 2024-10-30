@@ -20,6 +20,11 @@ public class EmailMessageService implements MessageService{
         }
     }
 
+    @Override
+    public void sendTelegramMessage(EmailMessage emailMessage) {
+        //Empty Body
+    }
+
     public boolean validateEmailAddress(String email) {
         // Regular expression pattern for validating email addresses
         String emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";

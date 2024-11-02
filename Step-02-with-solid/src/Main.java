@@ -63,10 +63,10 @@ public class Main {
                     TelegramMessage telegramMessage = new TelegramMessage();
                     System.out.print("Enter source phone : ");
                     source = scanner.next();
-                    telegramMessage.setSourceEmailAddress(source);
+                    telegramMessage.setSourcePhoneNumber(source);
                     System.out.print("Enter target phone : ");
                     target = scanner.next();
-                    telegramMessage.setTargetEmailAddress(target);
+                    telegramMessage.setTargetPhoneNumber(target);
                     System.out.println("Write Your Message : ");
                     content = scanner.next();
                     telegramMessage.setContent(content);
@@ -76,13 +76,13 @@ public class Main {
 
             if(message instanceof SmsMessage){
                 messageService = new SmsMessageService();
-                messageService.sendSmsMessage((SmsMessage) message);
+                messageService.sendMessage((SmsMessage) message);
             }else if(message instanceof EmailMessage){
                 messageService = new EmailMessageService();
-                messageService.sendEmailMessage((EmailMessage) message);
+                messageService.sendMessage((EmailMessage) message);
             } else if(message instanceof TelegramMessage){
                 messageService = new TelegramMessageService();
-                messageService.sendTelegramMessage((Telegram Message) message);
+                messageService.sendMessage((TelegramMessage) message);
             }
 
         }while (true);
